@@ -1,0 +1,77 @@
+===================================
+= Hands on: Atlas Search (Part 2) =
+===================================
+
+------
+Step 2
+------
+{
+  index: 'default',
+  text: {
+    query: 'batman returns',
+    path: ['title', 'plot']
+  }
+}
+
+------
+Step 3
+------
+{
+  index: 'default',
+  text: {
+    query: 'batmen returns',
+    path: ['title', 'plot'],
+    fuzzy: {}
+  }
+}
+
+------
+Step 4
+------
+
+  index: 'default',
+  text: {
+    query: 'batmen returns',
+    path: ['title', 'plot'],
+    fuzzy: {}
+  },
+  highlight:{
+    path: ['title', 'plot']
+  }
+}
+
+{
+  title: 1,
+  plot: 1,
+  _id: 0,
+  highlights: { "$meta": "searchHighlights" }
+}
+
+------
+Step 5
+------
+{
+  index: 'default',
+  compound:{
+    must:[{
+      text: {
+        query: 'batman',
+        path: 
+         ['title', 'plot']
+      }
+    }],
+    mustNot:[{
+      text:{
+        query: 'robin',
+        path: 
+         ['title', 'plot']
+      }
+    },{
+      text:{
+        query: 'son',
+        path: 
+         ['title', 'plot']
+      }
+    }]
+  }
+}

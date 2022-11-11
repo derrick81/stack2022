@@ -1,0 +1,41 @@
+=============================================
+= Hands on: MongoDB Flexible Schema and MQL =
+=============================================
+
+------
+Step 2
+------
+use stackdb
+
+------
+Step 4
+------
+db.stackcoll.insertOne({  "name": "Ned Stark",  "email": "sean_bean@gameofthron.es",  "password": "$2b$12$UREFwsRUoyF0CRqGNK0LzO0HM/jLhgUCNNIJ9RJAqMUQ74crlJ1Vu"})
+
+------
+Step 7
+------
+db.stackcoll.updateOne( {name: "Ned Stark"}, {$set: {"interest": ["books", "food", "music"]}} )
+
+------
+Step 9
+------
+db.movies.find({cast: "David Attenborough", year: {$gt: 2010}}, {title: 1, _id:0})
+
+-------
+Step 10
+-------
+{
+  cast: "David Attenborough"
+}
+
+{
+  _id: "$year",
+  numMovies: {
+    $count: {}
+  }
+}
+
+{
+  _id: 1
+}
